@@ -12,8 +12,7 @@ do
     pattern=$(sha256sum "$item" | awk '{ print $1 }') 
     if [[ "$pattern"  == "$hashval" ]]; then 
         echo "ALERT! found suspicious item below"
-        ls -l "$item"
-        exit 0 
+        ls -l "$item" 
     else 
         echo "safe: $item: $pattern" 
     fi
@@ -31,8 +30,6 @@ fi
 #val="$(find "$PWD" -maxdepth 1 -type f -exec sha256sum {} + | grep "$hashval")" 
 #if [[ -n "$val" ]]; then 
 #    echo "got a match:$val"
-#    echo exiting script
-#    exit 0 
 #else 
 #    echo "$val doesn't match" 
 #fi
